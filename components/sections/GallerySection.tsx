@@ -101,28 +101,28 @@ export default function GallerySection() {
   };
 
   return (
-    <section ref={sectionRef} className="relative bg-matte-black py-24 overflow-hidden">
+    <section id="gallery" ref={sectionRef} className="relative bg-matte-black py-16 sm:py-20 md:py-24 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-matte-black via-deep-purple/10 to-matte-black" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 md:mb-16"
         >
-          <span className="text-gold/60 uppercase tracking-[0.3em] text-xs">
+          <span className="text-gold/60 uppercase tracking-[0.2em] sm:tracking-[0.3em] text-xs">
             Our Performances
           </span>
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-white mt-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mt-2">
             Performance <span className="text-gradient-gold">Gallery</span>
           </h2>
-          <p className="text-white/60 mt-4 max-w-2xl mx-auto">
+          <p className="text-white/60 mt-3 sm:mt-4 max-w-xl sm:max-w-2xl mx-auto text-sm sm:text-base">
             Witness the magic we create at every event through our lens
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[200px] md:auto-rows-[250px] gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[150px] sm:auto-rows-[180px] md:auto-rows-[200px] lg:auto-rows-[250px] gap-2 sm:gap-3 md:gap-4">
           {galleryItems.map((item, index) => (
             <motion.div
               key={item.id}
@@ -130,7 +130,7 @@ export default function GallerySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`relative group cursor-pointer overflow-hidden rounded-2xl ${item.span}`}
+              className={`relative group cursor-pointer overflow-hidden rounded-xl sm:rounded-2xl ${item.span}`}
               onClick={() => openModal(item, index)}
               whileHover={{ scale: 1.02, zIndex: 10 }}
             >
@@ -148,23 +148,23 @@ export default function GallerySection() {
 
               {item.type === 'video' && (
                 <motion.div
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gold/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-gold"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 md:w-16 rounded-full bg-gold/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-gold"
                 >
-                  <Play size={24} className="text-matte-black ml-1" />
+                  <Play size={18} className="text-matte-black ml-1 sm:w-6 sm:h-6" />
                 </motion.div>
               )}
 
-              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+              <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6">
                 <span className="text-gold/80 text-xs uppercase tracking-wider">
                   {item.category}
                 </span>
-                <h3 className="text-white font-semibold text-sm md:text-lg mt-1 group-hover:text-gold transition-colors">
+                <h3 className="text-white font-semibold text-xs sm:text-sm md:text-lg mt-1 group-hover:text-gold transition-colors">
                   {item.title}
                 </h3>
               </div>
 
               <motion.div
-                className="absolute inset-0 border-2 border-gold/0 rounded-2xl group-hover:border-gold/50 transition-colors"
+                className="absolute inset-0 border-2 border-gold/0 rounded-xl sm:rounded-2xl group-hover:border-gold/50 transition-colors"
               />
             </motion.div>
           ))}
@@ -177,28 +177,28 @@ export default function GallerySection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-matte-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 z-50 bg-matte-black/95 backdrop-blur-xl flex items-center justify-center p-3 sm:p-4 md:p-8"
             onClick={closeModal}
           >
             <button
               onClick={closeModal}
-              className="absolute top-6 right-6 z-50 w-12 h-12 rounded-full glassmorphism flex items-center justify-center text-white hover:text-gold transition-colors"
+              className="absolute top-4 sm:top-6 right-4 sm:right-6 z-50 w-10 h-10 sm:w-12 sm:h-12 rounded-full glassmorphism flex items-center justify-center text-white hover:text-gold transition-colors"
             >
-              <X size={24} />
+              <X size={20} className="sm:w-6 sm:h-6" />
             </button>
 
             <button
               onClick={(e) => { e.stopPropagation(); navigate('prev'); }}
-              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glassmorphism flex items-center justify-center text-white hover:text-gold transition-colors z-50"
+              className="absolute left-2 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full glassmorphism flex items-center justify-center text-white hover:text-gold transition-colors z-50"
             >
-              <ChevronLeft size={24} />
+              <ChevronLeft size={20} className="sm:w-6 sm:h-6" />
             </button>
 
             <button
               onClick={(e) => { e.stopPropagation(); navigate('next'); }}
-              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glassmorphism flex items-center justify-center text-white hover:text-gold transition-colors z-50"
+              className="absolute right-2 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full glassmorphism flex items-center justify-center text-white hover:text-gold transition-colors z-50"
             >
-              <ChevronRight size={24} />
+              <ChevronRight size={20} className="sm:w-6 sm:h-6" />
             </button>
 
             <motion.div
@@ -206,7 +206,7 @@ export default function GallerySection() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="relative max-w-5xl w-full max-h-[80vh] rounded-3xl overflow-hidden"
+              className="relative max-w-4xl sm:max-w-5xl w-full max-h-[70vh] sm:max-h-[80vh] rounded-2xl sm:rounded-3xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative aspect-video">
@@ -220,30 +220,30 @@ export default function GallerySection() {
 
                 {selectedItem.type === 'video' && (
                   <motion.div
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-gold flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-gold"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 sm:w-20 md:w-24 sm:h-20 md:h-24 rounded-full bg-gold flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-gold"
                     whileHover={{ scale: 1.1 }}
                   >
-                    <Play size={40} className="text-matte-black ml-1" />
+                    <Play size={28} className="text-matte-black ml-1 sm:w-10 md:w-12 sm:h-10 md:h-12" />
                   </motion.div>
                 )}
               </div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-matte-black to-transparent">
-                <span className="text-gold text-sm uppercase tracking-wider">
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-matte-black to-transparent">
+                <span className="text-gold text-xs sm:text-sm uppercase tracking-wider">
                   {selectedItem.category}
                 </span>
-                <h3 className="text-white text-2xl md:text-3xl font-display font-bold mt-1">
+                <h3 className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold mt-1">
                   {selectedItem.title}
                 </h3>
               </div>
             </motion.div>
 
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+            <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-1 sm:gap-2">
               {galleryItems.map((_, index) => (
                 <div
                   key={index}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentIndex ? 'w-8 bg-gold' : 'bg-white/30'
+                  className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${
+                    index === currentIndex ? 'w-6 sm:w-8 bg-gold' : 'bg-white/30'
                   }`}
                 />
               ))}

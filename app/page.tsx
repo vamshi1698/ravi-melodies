@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import Lenis from '@studio-freight/lenis';
 import dynamic from 'next/dynamic';
+import Header from '@/components/ui/Header';
 import ScrollStorySection from '@/components/sections/ScrollStorySection';
 import TimelineSection from '@/components/sections/TimelineSection';
 import ServicesSection from '@/components/sections/ServicesSection';
@@ -20,7 +21,7 @@ const HeroSection = dynamic(() => import('@/components/sections/HeroSection'), {
   ssr: false,
   loading: () => (
     <div className="h-screen w-full bg-matte-black flex items-center justify-center">
-      <div className="animate-pulse text-gold text-2xl">Loading Experience...</div>
+      <div className="animate-pulse text-gold text-lg sm:text-2xl">Loading Experience...</div>
     </div>
   ),
 });
@@ -60,6 +61,7 @@ export default function Home() {
       className="relative min-h-screen bg-matte-black"
     >
       <CursorSpotlight />
+      <Header />
       <HeroSection />
       <ScrollStorySection />
       <TimelineSection />
